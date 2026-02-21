@@ -94,8 +94,18 @@ void compute_mechanics() {
                 p->strain_vm = sqrt(e_xx*e_xx + e_yy*e_yy + e_zz*e_zz + 2*(e_xy*e_xy + e_yz*e_yz + e_xz*e_xz));
                 p->stress_vm = sqrt(0.5f * ((s_xx-s_yy)*(s_xx-s_yy) + (s_yy-s_zz)*(s_yy-s_zz) + (s_zz-s_xx)*(s_zz-s_xx) + 6.0f*(s_xy*s_xy + s_yz*s_yz + s_xz*s_xz)));
                 p->energy = 0.5f * (s_xx*(e_xx-e_th) + s_yy*(e_yy-e_th) + s_zz*(e_zz-e_th) + 2.0f*(s_xy*e_xy + s_yz*e_yz + s_xz*e_xz));
+                
+                float term_dilatazione = (3.0f * lambda_lame + 2.0f * mu_lame) * alpha * tr_e;
+                float term_calore = (c_v / T_0) * p->delta_T;
+                p->eta = term_dilatazione + term_calore;
 
-                float val = (view_mode == 0) ? p->strain_vm : ((view_mode == 1) ? p->stress_vm : ((view_mode == 2) ? p->energy : p->delta_T));
+                float val;
+                if (view_mode == 0) val = p->strain_vm;
+                else if (view_mode == 1) val = p->stress_vm;
+                else if (view_mode == 2) val = p->energy;
+                else if (view_mode == 3) val = p->delta_T;
+                else val = p->eta;
+
                 if (val > current_max_val) current_max_val = val;
                 if (val < current_min_val) current_min_val = val;
             }

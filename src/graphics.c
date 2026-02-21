@@ -50,7 +50,12 @@ void display() {
     glPushMatrix(); glLoadIdentity(); gluOrtho2D(0, 800, 0, 600);
     glMatrixMode(GL_MODELVIEW); glPushMatrix(); glLoadIdentity();
     
-    char* mode_str = (view_mode == 0) ? "Strain" : ((view_mode == 1) ? "Stress" : ((view_mode == 2) ? "Energy" : "Temperature"));
+    char mode_str[20];
+    if (view_mode == 0) sprintf(mode_str, "Strain");
+    else if (view_mode == 1) sprintf(mode_str, "Stress");
+    else if (view_mode == 2) sprintf(mode_str, "Energy");
+    else if (view_mode == 3) sprintf(mode_str, "Temperature");
+    else sprintf(mode_str, "Entropy");
     char* interact_str = (interaction_mode == 0) ? "DEFORM" : "PAINT HEAT";
     
     char info1[200], info2[200];

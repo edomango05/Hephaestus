@@ -6,6 +6,8 @@
 float E = 1000.0f;
 float nu = 0.3f;
 float alpha = 0.05f;
+float c_v = 500.0f;
+float T_0 = 293.0f;
 float lambda_lame, mu_lame;
 Point grid[N][N][N];
 float delta_L;

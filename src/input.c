@@ -4,7 +4,7 @@
 
 void keyboard(unsigned char key, int x, int y) {
     switch(key) {
-        case ' ': view_mode = (view_mode + 1) % 4; break;
+        case ' ': view_mode = (view_mode + 1) % 5; break;
         case 'm': case 'M': interaction_mode = (interaction_mode == 0) ? 1 : 0; break;
         case 'e': E *= 0.9f; init_material(); break;
         case 'E': E *= 1.1f; init_material(); break;

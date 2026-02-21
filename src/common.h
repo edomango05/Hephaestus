@@ -17,11 +17,14 @@ typedef struct {
     float strain_vm;
     float stress_vm;
     float energy;
+    float eta;
 } Point;
 
 extern float E;
 extern float nu;
 extern float alpha;
+extern float c_v;
+extern float T_0;
 extern float lambda_lame, mu_lame;
 extern Point grid[N][N][N];
 extern float delta_L;

@@ -25,6 +25,10 @@ For a linear isotropic thermoelastic material, the Helmholtz free energy density
 
 $$\psi(\mathbf{E}, \theta) = \frac{1}{2} \lambda (\text{tr}\mathbf{E})^2 + \mu \text{tr}(\mathbf{E}^2) - (3\lambda + 2\mu)\alpha (\theta - \theta_0) \text{tr}\mathbf{E} + C(\theta - \theta_0)$$
 
+and the entropy density:
+
+$$\eta = (3\lambda + 2\mu)\alpha \text{tr}\mathbf{E} + \frac{c_v}{T_0} (\theta - \theta_0)$$
+
 ## Dependencies
 To compile and run this project, you need a C compiler and the OpenGL utility toolkit:
 * `gcc`
