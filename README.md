@@ -27,7 +27,7 @@ $$\psi(\mathbf{E}, \theta) = \frac{1}{2} \lambda (\text{tr}\mathbf{E})^2 + \mu \
 
 and the entropy density:
 
-$$\eta = (3\lambda + 2\mu)\alpha \text{tr}\mathbf{E} + \frac{c_v}{T_0} (\theta - \theta_0)$$
+$$\eta = (3\lambda + 2\mu)\alpha \text{tr}\mathbf{E} + \frac{c_v}{\theta_0} (\theta - \theta_0)$$
 
 ## Dependencies
 To compile and run this project, you need a C compiler and the OpenGL utility toolkit:
