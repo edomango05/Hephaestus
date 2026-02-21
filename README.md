@@ -13,7 +13,7 @@ A real-time, interactive 3D physics simulator written in C and OpenGL/GLUT. This
   * Thermal Field (Temperature change)
 
 ## Physics Background
-The simulation computes the total strain tensor $\varepsilon_{ij}$ using spatial derivatives of the displacement field. It then applies the **Duhamel-Neumann** equations for isotropic thermoelasticity to compute the stress tensor $\sigma_{ij}$:
+The simulation computes the total strain tensor $E_{ij}$ using spatial derivatives of the displacement field. It then applies the **Duhamel-Neumann** equations for isotropic thermoelasticity to compute the stress tensor $T_{ij}$:
 
 $$T_{ij} = \lambda \text{Tr}(E - E^{th}) \delta_{ij} + 2\mu (E_{ij} - E^{th}_{ij})$$
 
