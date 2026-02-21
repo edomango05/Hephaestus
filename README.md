@@ -1,6 +1,7 @@
 # 3D Interactive Thermoelasticity Simulator
 
 A real-time, interactive 3D physics simulator written in C and OpenGL/GLUT. This project visualizes linear elastic mechanics and thermoelasticity on a 3D grid using kinematic deformation. 
+![sample.png](sample.png)
 
 ## Features
 * **Real-Time Deformation:** Interactively drag points on the mesh to see immediate strain and stress propagation.
