@@ -15,13 +15,16 @@ A real-time, interactive 3D physics simulator written in C and OpenGL/GLUT. This
 ## Physics Background
 The simulation computes the total strain tensor $E_{ij}$ using spatial derivatives of the displacement field. It then applies the **Duhamel-Neumann** equations for isotropic thermoelasticity to compute the stress tensor $T_{ij}$:
 
-$$ T_{ij} = \lambda \text{tr}(E - E^{th}) \delta_{ij} + 2\mu (E_{ij} - E^{th}_{ij}) $$
+$$T_{ij} = \lambda \text{tr}(E - E^{th}) \delta_{ij} + 2\mu (E_{ij} - E^{th}_{ij})$$
 
 Where the thermal strain is: 
+
 $$E^{th}_{ij} = \alpha (\theta - \theta_0) \delta_{ij}$$
 
 For a linear isotropic thermoelastic material, the Helmholtz free energy density $\psi$ is defined as:
-$$ \psi(\mathbf{E}, \theta) = \frac{1}{2} \lambda (\text{tr}\mathbf{E})^2 + \mu \text{tr}(\mathbf{E}^2) - (3\lambda + 2\mu)\alpha (\theta - \theta_0) \text{tr}\mathbf{E} + C(\theta - \theta_0)$$
+
+$$\psi(\mathbf{E}, \theta) = \frac{1}{2} \lambda (\text{tr}\mathbf{E})^2 + \mu \text{tr}(\mathbf{E}^2) - (3\lambda + 2\mu)\alpha (\theta - \theta_0) \text{tr}\mathbf{E} + C(\theta - \theta_0)$$
+
 ## Dependencies
 To compile and run this project, you need a C compiler and the OpenGL utility toolkit:
 * `gcc`
