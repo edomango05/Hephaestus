@@ -31,26 +31,26 @@ void init_grid() {
 static float get_deriv(int i, int j, int k, int axis, int var) {
     int i_next = i, j_next = j, k_next = k;
     int i_prev = i, j_prev = j, k_prev = k;
-    float dL = delta_L;
+    float dL = delta_L * 2.0f;
 
     if (axis == 0) { 
         if (i == 0) { i_next = 1; i_prev = 0; }
         else if (i == N - 1) { i_next = N - 1; i_prev = N - 2; }
-        else { i_next = i + 1; i_prev = i - 1; dL *= 2.0f; }
+        else { i_next = i + 1; i_prev = i - 1; }
     } else if (axis == 1) { 
         if (j == 0) { j_next = 1; j_prev = 0; }
         else if (j == N - 1) { j_next = N - 1; j_prev = N - 2; }
-        else { j_next = j + 1; j_prev = j - 1; dL *= 2.0f; }
+        else { j_next = j + 1; j_prev = j - 1; }
     } else if (axis == 2) { 
         if (k == 0) { k_next = 1; k_prev = 0; }
         else if (k == N - 1) { k_next = N - 1; k_prev = N - 2; }
-        else { k_next = k + 1; k_prev = k - 1; dL *= 2.0f; }
+        else { k_next = k + 1; k_prev = k - 1; }
     }
 
     float val_next, val_prev;
     if (var == 0) { val_next = grid[i_next][j_next][k_next].u; val_prev = grid[i_prev][j_prev][k_prev].u; } 
     else if (var == 1) { val_next = grid[i_next][j_next][k_next].v; val_prev = grid[i_prev][j_prev][k_prev].v; } 
-    else { val_next = grid[i_next][j_next][k_next].w; val_prev = grid[i_prev][j_prev][k_prev].w; }
+    else if (var == 2) { val_next = grid[i_next][j_next][k_next].w; val_prev = grid[i_prev][j_prev][k_prev].w; }
 
     return (val_next - val_prev) / dL;
 }
