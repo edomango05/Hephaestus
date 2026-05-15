@@ -2,10 +2,10 @@
 #include "input.h"
 #include "physics.h"
 
-void keyboard(unsigned char key, int x, int y) {
+void keyboard(unsigned char key, int __attribute__((unused)) x, int __attribute__((unused)) y){
     switch(key) {
-        case ' ': view_mode = (view_mode + 1) % 5; break;
-        case 'm': case 'M': interaction_mode = (interaction_mode == 0) ? 1 : 0; break;
+        case ' ': view_mode = (view_mode + 1) % VIEW_INVALID; break;
+        case 'm': case 'M': interaction_mode = (interaction_mode == MODE_DEFORM) ? 1 : 0; break;
         case 'e': E *= 0.9f; init_material(); break;
         case 'E': E *= 1.1f; init_material(); break;
         case 'p': nu -= 0.05f; init_material(); break;
@@ -30,7 +30,7 @@ void mouse(int button, int state, int x, int y) {
             glGetDoublev(GL_MODELVIEW_MATRIX, modelview);
             glGetDoublev(GL_PROJECTION_MATRIX, projection);
             glGetIntegerv(GL_VIEWPORT, viewport);
-
+            
             float min_dist = 1e9f;
             for (int i = 0; i < N; i++) {
                 for (int j = 0; j < N; j++) {
@@ -68,7 +68,7 @@ void motion(int x, int y) {
                     float dist = sqrt(pow(p->X - sp->X, 2) + pow(p->Y - sp->Y, 2) + pow(p->Z - sp->Z, 2));
                     float weight = exp(-(dist * dist) / (radius * radius));
                     
-                    if (interaction_mode == 0) {
+                    if (interaction_mode == MODE_DEFORM) {
                         p->x += dx * weight * cos(-cam_rot_y * M_PI / 180.0f);
                         p->z += dx * weight * sin(-cam_rot_y * M_PI / 180.0f);
                         p->y += dy * weight; 

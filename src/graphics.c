@@ -15,6 +15,7 @@ static void get_color(float val, float* r, float* g, float* b) {
         *g = 1.0f - (norm - 0.5f) * 2.0f;
         *b = 0.0f;
     }
+
 }
 
 void display() {
@@ -31,7 +32,7 @@ void display() {
         for (int j = 0; j < N; j++) {
             for (int k = 0; k < N; k++) {
                 Point* p = &grid[i][j][k];
-                float val = (view_mode == 0) ? p->strain_vm : ((view_mode == 1) ? p->stress_vm : ((view_mode == 2) ? p->energy : p->delta_T));
+                float val = (view_mode == VIEW_STRAIN) ? p->strain_vm : ((view_mode == VIEW_STRESS) ? p->stress_vm : ((view_mode == VIEW_ENERGY) ? p->energy : p->delta_T));
                 
                 float r, g, b;
                 get_color(val, &r, &g, &b);
@@ -51,12 +52,12 @@ void display() {
     glMatrixMode(GL_MODELVIEW); glPushMatrix(); glLoadIdentity();
     
     char mode_str[20];
-    if (view_mode == 0) sprintf(mode_str, "Strain");
-    else if (view_mode == 1) sprintf(mode_str, "Stress");
-    else if (view_mode == 2) sprintf(mode_str, "Energy");
-    else if (view_mode == 3) sprintf(mode_str, "Temperature");
+    if (view_mode == VIEW_STRAIN) sprintf(mode_str, "Strain");
+    else if (view_mode == VIEW_STRESS) sprintf(mode_str, "Stress");
+    else if (view_mode == VIEW_ENERGY) sprintf(mode_str, "Energy");
+    else if (view_mode == VIEW_TEMPERATURE) sprintf(mode_str, "Temperature");
     else sprintf(mode_str, "Entropy");
-    char* interact_str = (interaction_mode == 0) ? "DEFORM" : "PAINT HEAT";
+    char* interact_str = (interaction_mode == MODE_DEFORM) ? "DEFORM" : "PAINT HEAT";
     
     char info1[200], info2[200];
     sprintf(info1, "View: [%s] | Action: [%s]", mode_str, interact_str);

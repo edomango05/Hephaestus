@@ -12,8 +12,8 @@ float lambda_lame, mu_lame;
 Point grid[N][N][N];
 float delta_L;
 
-int view_mode = 0;
-int interaction_mode = 0;
+View_Mode view_mode = VIEW_STRAIN;
+Interaction_Mode interaction_mode = MODE_DEFORM;
 int selected_i = -1, selected_j = -1, selected_k = -1;
 int last_mouse_x, last_mouse_y;
 int is_dragging = 0;
@@ -28,7 +28,7 @@ int main(int argc, char** argv) {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
     glutInitWindowSize(900, 600);
-    glutCreateWindow("Thermoelasticity Simulator");
+    glutCreateWindow("Hephaestus Thermoelasticity Simulator");
 
     glEnable(GL_DEPTH_TEST);
     

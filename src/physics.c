@@ -51,7 +51,7 @@ static float get_deriv(int i, int j, int k, int axis, int var) {
     if (var == 0) { val_next = grid[i_next][j_next][k_next].u; val_prev = grid[i_prev][j_prev][k_prev].u; } 
     else if (var == 1) { val_next = grid[i_next][j_next][k_next].v; val_prev = grid[i_prev][j_prev][k_prev].v; } 
     else if (var == 2) { val_next = grid[i_next][j_next][k_next].w; val_prev = grid[i_prev][j_prev][k_prev].w; }
-
+    else { return 0.0f; }  // TODO Undefined behaviour 
     return (val_next - val_prev) / dL;
 }
 
@@ -100,10 +100,10 @@ void compute_mechanics() {
                 p->eta = term_dilatazione + term_calore;
 
                 float val;
-                if (view_mode == 0) val = p->strain_vm;
-                else if (view_mode == 1) val = p->stress_vm;
-                else if (view_mode == 2) val = p->energy;
-                else if (view_mode == 3) val = p->delta_T;
+                if (view_mode == VIEW_STRAIN) val = p->strain_vm;
+                else if (view_mode == VIEW_STRESS) val = p->stress_vm;
+                else if (view_mode == VIEW_ENERGY) val = p->energy;
+                else if (view_mode == VIEW_TEMPERATURE) val = p->delta_T;
                 else val = p->eta;
 
                 if (val > current_max_val) current_max_val = val;
