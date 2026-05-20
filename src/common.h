@@ -61,4 +61,7 @@ typedef enum {
     VIEW_INVALID
 } View_Mode;
 
+extern View_Mode view_mode;
+extern Interaction_Mode interaction_mode;
+
 #endif // COMMON_H
