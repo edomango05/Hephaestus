@@ -13,7 +13,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define N 12
+#define N 20
 #define SIZE 2.0f
 
 typedef struct {
@@ -60,8 +60,5 @@ typedef enum {
     // Reminder: Add after this and BEFORE VIEW_INVALID, it has to be the last one :)
     VIEW_INVALID
 } View_Mode;
-
-extern View_Mode view_mode;
-extern Interaction_Mode interaction_mode;
 
 #endif // COMMON_H
